@@ -172,13 +172,13 @@ struct SecondStage: Codable {
 // MARK: - Payloads
 struct Payloads: Codable {
     let option1: String
-    let compositeFairing: CompositeFairing
     let option2: String?
+    let compositeFairing: CompositeFairing
 
     enum CodingKeys: String, CodingKey {
         case option1
-        case compositeFairing
         case option2
+        case compositeFairing
     }
 }
 

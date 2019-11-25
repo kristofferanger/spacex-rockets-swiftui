@@ -15,8 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(model.rockets) { rocket in
-                Text(rocket.rocketName)
-                    .font(.headline)
+                RocketView(rocket: rocket)
             }
             .onAppear(perform: {
                 self.model.loadData()
