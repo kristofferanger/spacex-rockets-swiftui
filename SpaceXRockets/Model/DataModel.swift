@@ -39,7 +39,7 @@ class DataModel: ObservableObject, Identifiable {
         .assign(to: \.rockets, on: self)
     }
     
-    static var exampleRocket: Rocket {
+    static var mockRocket: Rocket {
         guard let rocket = try? decoder.decode(Rocket.self, from: jsonRocket.data(using: .utf8)!) else {
             fatalError("Failed to decode \(jsonRocket).")
         }
@@ -156,9 +156,9 @@ class DataModel: ObservableObject, Identifiable {
         },
         "flickr_images": [
         "https://instagram.fmad8-1.fna.fbcdn.net/vp/1c76ba72553707f9b1066888ebf24c24/5E2EFA82/t51.2885-15/e35/s1080x1080/70061045_535978163611221_5090594774081844848_n.jpg?_nc_ht=instagram.fmad8-1.fna.fbcdn.net&_nc_cat=1",
-        "https://www.spacex.com/sites/spacex/files/starship_cloud_launch1_moved_morechrome.jpg",
-        "https://www.spacex.com/sites/spacex/files/starship_uses.jpg",
-        "https://www.spacex.com/sites/spacex/files/starship_mk1_night_v2.jpg",
+            "https://www.spacex.com/sites/spacex/files/starship_cloud_launch1_moved_morechrome.jpg",
+            "https://www.spacex.com/sites/spacex/files/starship_uses.jpg",
+            "https://www.spacex.com/sites/spacex/files/starship_mk1_night_v2.jpg",
         "https://instagram.fmad8-1.fna.fbcdn.net/vp/c67d2cb3f905f0a2485fa1164035a02a/5E2BBFF6/t51.2885-15/e35/s1080x1080/70419441_2713546198664768_4765877513825954197_n.jpg?_nc_ht=instagram.fmad8-1.fna.fbcdn.net&_nc_cat=108",
         "https://instagram.fmad8-1.fna.fbcdn.net/vp/961b8536a820d0aab48c738f39b9772d/5E3B33F9/t51.2885-15/e35/s1080x1080/70746427_685731121954090_714212350511846981_n.jpg?_nc_ht=instagram.fmad8-1.fna.fbcdn.net&_nc_cat=110"
         ],

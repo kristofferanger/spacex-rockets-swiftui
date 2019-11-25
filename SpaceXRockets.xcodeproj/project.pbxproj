@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C93340C2238C0A96007FE5F6 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93340C1238C0A96007FE5F6 /* RocketView.swift */; };
+		C93340C5238C1544007FE5F6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C93340C4238C1544007FE5F6 /* SDWebImageSwiftUI */; };
+		C93340C7238C1D85007FE5F6 /* RocketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93340C6238C1D85007FE5F6 /* RocketDetailView.swift */; };
 		C9670BBF238BD04B00390D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9670BBE238BD04B00390D70 /* AppDelegate.swift */; };
 		C9670BC1238BD04B00390D70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9670BC0238BD04B00390D70 /* SceneDelegate.swift */; };
 		C9670BC3238BD04B00390D70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9670BC2238BD04B00390D70 /* ContentView.swift */; };
@@ -20,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		C93340C1238C0A96007FE5F6 /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
+		C93340C6238C1D85007FE5F6 /* RocketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailView.swift; sourceTree = "<group>"; };
 		C9670BBB238BD04B00390D70 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9670BBE238BD04B00390D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9670BC0238BD04B00390D70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93340C5238C1544007FE5F6 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,7 @@
 			children = (
 				C9670BC2238BD04B00390D70 /* ContentView.swift */,
 				C93340C1238C0A96007FE5F6 /* RocketView.swift */,
+				C93340C6238C1D85007FE5F6 /* RocketDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +129,9 @@
 			dependencies = (
 			);
 			name = SpaceXRockets;
+			packageProductDependencies = (
+				C93340C4238C1544007FE5F6 /* SDWebImageSwiftUI */,
+			);
 			productName = SpaceXRockets;
 			productReference = C9670BBB238BD04B00390D70 /* SpaceXRockets.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +160,9 @@
 				Base,
 			);
 			mainGroup = C9670BB2238BD04B00390D70;
+			packageReferences = (
+				C93340C3238C1544007FE5F6 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = C9670BBC238BD04B00390D70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -184,6 +195,7 @@
 				C9670BD6238BDF6C00390D70 /* DataModel.swift in Sources */,
 				C9670BC1238BD04B00390D70 /* SceneDelegate.swift in Sources */,
 				C9670BC3238BD04B00390D70 /* ContentView.swift in Sources */,
+				C93340C7238C1D85007FE5F6 /* RocketDetailView.swift in Sources */,
 				C9670BD8238BE05200390D70 /* ModelObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C93340C3238C1544007FE5F6 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C93340C4238C1544007FE5F6 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C93340C3238C1544007FE5F6 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C9670BB3238BD04B00390D70 /* Project object */;
 }

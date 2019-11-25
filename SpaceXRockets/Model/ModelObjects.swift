@@ -37,7 +37,34 @@ struct Rocket: Codable, Identifiable {
     let rocketId: String
     let rocketName: String
     let rocketType: String
+    
+    // caculated properties
+    var firstLaunchString: String {
+        return "First launch: " + dateFormatter.string(from: self.firstFlight)
+    }
+    
+    var heightString: String {
+        guard let meters = self.height.meters else {
+            return "Unknown"
+        }
+        return String(format:"%.1f m", meters)
+    }
+    
+    var weightString: String {
+        guard let weigth =  self.mass.kg else {
+            return "Unknown"
+        }
+        return String(format:"%.1f t", Double(weigth)/1000)
+    }
+    
+    var diameterString: String {
+        guard let meter =  self.diameter.meters else {
+            return "Unknown"
+        }
+        return String(format:"%.1f m", meter)
+    }
 
+    // coding keys
     enum CodingKeys: String, CodingKey {
         case id
         case active
@@ -62,6 +89,12 @@ struct Rocket: Codable, Identifiable {
         case rocketId
         case rocketName
         case rocketType
+    }
+
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
     }
 }
 
@@ -141,13 +174,16 @@ struct LandingLegs: Codable {
 
 // MARK: - Mass
 struct Mass: Codable {
-    let kg, lb: Int
+    let kg: Int?
+    let lb: Int?
 }
 
 // MARK: - PayloadWeight
 struct PayloadWeight: Codable {
-    let id, name: String
-    let kg, lb: Int
+    let id: String
+    let name: String
+    let kg: Int
+    let lb: Int
 }
 
 // MARK: - SecondStage
