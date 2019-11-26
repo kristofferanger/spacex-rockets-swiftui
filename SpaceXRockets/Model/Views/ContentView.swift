@@ -27,7 +27,7 @@ struct ContentView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 100)
             )
-        }.accentColor( .white)
+        }.accentColor(.white)
     }
 }
 

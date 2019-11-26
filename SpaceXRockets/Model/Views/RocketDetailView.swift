@@ -45,6 +45,18 @@ struct RocketDetailView: View {
             Text(rocket.rocketDescription)
                 .lineLimit(nil)
                 .padding()
+            
+            HStack(spacing: 40) {
+                VStack(spacing: 20) {
+                    DataBlock(header: "DIAMETER", value: rocket.diameterString)
+                    DataBlock(header: "PROPELLANT CAPACITY", value: rocket.propellantCapacityString)
+                }
+                VStack(spacing: 20) {
+                    DataBlock(header: "HEIGHT", value: rocket.heightString)
+                    DataBlock(header: "MASS", value: rocket.weightString)
+                }
+            }
+            .padding()
             Spacer()
         }
         .edgesIgnoringSafeArea(.top)
@@ -69,6 +81,24 @@ struct RocketDetailView: View {
     }
 }
 
+
+struct DataBlock: View {
+    
+    var header: String
+    var value: String
+    
+    var body: some View {
+        VStack {
+            Text(header)
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Divider()
+                .background(Color.secondary)
+            Text(value)
+                .font(.title)
+        }
+    }
+}
 
 
 struct RocketDetailView_Previews: PreviewProvider {

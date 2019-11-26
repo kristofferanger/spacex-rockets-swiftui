@@ -36,7 +36,7 @@ struct RocketView: View {
                             .font(.subheadline)
                             .foregroundColor( .secondary)
                     }
-                    TechDataView(diameter: rocket.diameterString,
+                    ListDataBlock(diameter: rocket.diameterString,
                                  height: rocket.heightString,
                                  weight: rocket.weightString)
                 }
@@ -46,7 +46,7 @@ struct RocketView: View {
     }
 }
 
-struct TechDataView: View {
+struct ListDataBlock: View {
     
     var diameter: String
     var height: String

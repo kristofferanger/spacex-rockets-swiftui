@@ -95,9 +95,9 @@
 		C9670BD3238BDF0000390D70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C9670BD2238BDEEC00390D70 /* Views */,
 				C9670BD5238BDF6C00390D70 /* DataModel.swift */,
 				C9670BD7238BE05200390D70 /* ModelObjects.swift */,
-				C9670BD2238BDEEC00390D70 /* Views */,
 			);
 			path = Model;
 			sourceTree = "<group>";

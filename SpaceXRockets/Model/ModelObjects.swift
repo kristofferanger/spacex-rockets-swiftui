@@ -38,7 +38,7 @@ struct Rocket: Codable, Identifiable {
     let rocketName: String
     let rocketType: String
     
-    // calculated properties
+    // computed properties
     var firstLaunchString: String {
         return "First launch: " + dateFormatter.string(from: self.firstFlight)
     }
@@ -62,6 +62,13 @@ struct Rocket: Codable, Identifiable {
             return "Unknown"
         }
         return String(format:"%.1f m", meter)
+    }
+    
+    var propellantCapacityString: String {
+        guard let tonsFirst = self.secondStage.fuelAmountTons, let tonsSecond = self.firstStage.fuelAmountTons else {
+            return "Unknown"
+        }
+        return String(format:"%.0f t", tonsFirst + tonsSecond)
     }
 
     // coding keys
@@ -149,7 +156,7 @@ struct Thrust: Codable {
 struct FirstStage: Codable {
     let reusable: Bool
     let engines: Int
-    let fuelAmountTons: Double
+    let fuelAmountTons: Double?
     let burnTimeSEC: Int?
     let thrustSeaLevel: Thrust
     let thrustVacuum: Thrust
@@ -190,7 +197,7 @@ struct PayloadWeight: Codable {
 struct SecondStage: Codable {
     let reusable: Bool
     let engines: Int
-    let fuelAmountTons: Double
+    let fuelAmountTons: Double?
     let burnTimeSEC: Int?
     let thrust: Thrust
     let payloads: Payloads
