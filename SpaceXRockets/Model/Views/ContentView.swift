@@ -17,9 +17,9 @@ struct ContentView: View {
             List(model.rockets) { rocket in
                 RocketView(rocket: rocket)
             }
-            .onAppear(perform: {
+            .onAppear {
                 self.model.loadData()
-            })
+            }
             .navigationBarTitle("Rockets")
             .navigationBarItems(leading:
                     Image("spacex_logo")
@@ -27,6 +27,16 @@ struct ContentView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 100)
             )
-        }
+        }.accentColor( .white)
     }
 }
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+
+        RocketView(rocket: DataModel.mockRocket)
+    }
+}
+
+

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+ import SDWebImageSwiftUI
 
 struct RocketView: View {
     
@@ -16,7 +16,7 @@ struct RocketView: View {
     var body: some View {
         
         NavigationLink(destination: RocketDetailView(rocket: rocket)) {
-            HStack {
+            HStack (alignment: .center) {
                 WebImage(url: URL(string: rocket.flickrImages.first!))
                 .resizable()
                 .placeholder {
@@ -46,14 +46,6 @@ struct RocketView: View {
     }
 }
 
-
-struct RocketView_Previews: PreviewProvider {
-    static var previews: some View {
-
-        RocketView(rocket: DataModel.mockRocket)
-    }
-}
-
 struct TechDataView: View {
     
     var diameter: String
@@ -80,5 +72,13 @@ struct TechDataView: View {
                 .frame(maxWidth: geometry.size.width/3, alignment: .leading)
             }
         }
+    }
+}
+
+
+struct RocketView_Previews: PreviewProvider {
+    static var previews: some View {
+
+        RocketView(rocket: DataModel.mockRocket)
     }
 }

@@ -38,7 +38,7 @@ struct Rocket: Codable, Identifiable {
     let rocketName: String
     let rocketType: String
     
-    // caculated properties
+    // calculated properties
     var firstLaunchString: String {
         return "First launch: " + dateFormatter.string(from: self.firstFlight)
     }
