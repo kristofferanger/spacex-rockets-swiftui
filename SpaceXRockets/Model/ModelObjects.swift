@@ -31,7 +31,7 @@ struct Rocket: Codable, Identifiable {
     let secondStage: SecondStage
     let engines: Engines
     let landingLegs: LandingLegs
-    let flickrImages: [String]
+    let flickrImages: Array<String>
     let wikipedia: String
     let rocketDescription: String
     let rocketId: String

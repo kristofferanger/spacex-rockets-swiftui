@@ -13,34 +13,12 @@ struct RocketDetailView: View {
 
     var rocket: Rocket
 
-    @State private var currentImageIndex = 0
-    
     var body: some View {
+        
         VStack {
-            ZStack (alignment: .bottom) {
-                // TODO: make a nice transation between images
-                WebImage(url: URL(string: nextRocketImageUrl))
-                .resizable()
-                .placeholder {
-                    Rectangle().foregroundColor(.gray)
-                }
-                .animation(.easeInOut(duration: 0.5))
-                .transition(.fade)
-                .frame(maxWidth: .infinity, maxHeight: 300)
-                
-                Rectangle()
-                    .foregroundColor(.black)
-                    .frame(height: 70)
-                    .opacity(0.25)
-                    .blur(radius: 15)
-                HStack {
-                    Text(rocket.rocketName)
-                        .font( .largeTitle)
-                        .foregroundColor( .white)
-                    Spacer()
-                    }
-                    .padding()
-            }
+            
+            HeaderImage(imageUrls: self.rocket.flickrImages,
+                        rocketName: self.rocket.rocketName)
             
             Text(rocket.rocketDescription)
                 .lineLimit(nil)
@@ -60,18 +38,71 @@ struct RocketDetailView: View {
             Spacer()
         }
         .edgesIgnoringSafeArea(.top)
+    }
+}
+
+struct HeaderImage: View {
+    
+    var imageUrls: [String]
+    var rocketName: String
+    
+    @State private var currentImageIndex = 0
+    
+    var body: some View {
+        
+        ZStack (alignment: .bottom) {
+            
+            GeometryReader { geometry in
+                HStack (alignment:.top, spacing: 0) {
+                    ForEach (self.rocketImageUrls, id: \.self) { imageUrl in
+                        WebImage(url: URL(string:imageUrl))
+                        .resizable()
+                        .placeholder {
+                            Rectangle().foregroundColor(.gray)
+                        }
+                        .frame(minWidth: geometry.size.width, maxHeight: 300)
+                    }
+                }
+                .offset(x: -geometry.size.width)
+                .transition(AnyTransition.opacity)
+                .animation(.easeInOut(duration:1))
+            }
+            
+            Rectangle()
+                .foregroundColor(.black)
+                .frame(height: 70)
+                .opacity(0.25)
+                .blur(radius: 15)
+            HStack {
+                Text(self.rocketName)
+                    .font( .largeTitle)
+                    .foregroundColor( .white)
+                Spacer()
+                }
+                .padding()
+        }
         .onAppear {
             self.startTimer()
         }
     }
     
-    private var nextRocketImageUrl: String {
-        return rocket.flickrImages[currentImageIndex]
+    private var rocketImageUrls: [String] {
+        let previous = imageUrls[currentImageIndex == 0 ? imageUrls.count-1 : currentImageIndex-1]
+        let current = imageUrls[currentImageIndex]
+        let next = imageUrls[currentImageIndex == imageUrls.count-1 ? 0 : currentImageIndex+1]
+        return [previous, current, next]
+    }
+    
+    private var transition: AnyTransition {
+        let insertion = AnyTransition.move(edge: .trailing)
+        let removal = AnyTransition.opacity
+        return .asymmetric(insertion: insertion, removal: removal)
     }
     
     private func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-                        if self.currentImageIndex < self.rocket.flickrImages.count-1 {
+            
+            if self.currentImageIndex < self.imageUrls.count-1 {
                 self.currentImageIndex += 1
             }
             else {
