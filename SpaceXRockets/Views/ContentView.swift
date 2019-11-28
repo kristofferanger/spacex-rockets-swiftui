@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(model.rockets) { rocket in
+            List(model.rockets.sorted{ $0.firstFlight > $1.firstFlight } ) { rocket in
                 RocketView(rocket: rocket)
             }
             .onAppear {

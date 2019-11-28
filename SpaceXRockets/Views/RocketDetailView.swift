@@ -47,24 +47,21 @@ struct HeaderImage: View {
     var rocketName: String
     
     @State private var currentImageIndex = 0
-    
+        
     var body: some View {
         
         ZStack (alignment: .bottom) {
-            
             GeometryReader { geometry in
                 HStack (alignment:.top, spacing: 0) {
                     ForEach (self.rocketImageUrls, id: \.self) { imageUrl in
                         WebImage(url: URL(string:imageUrl))
-                        .resizable()
-                        .placeholder {
-                            Rectangle().foregroundColor(.gray)
-                        }
-                        .frame(minWidth: geometry.size.width, maxHeight: 300)
+                            .resizable()
+                            .placeholder {
+                                Rectangle().foregroundColor(.gray)
+                            }
+                            .frame(minWidth: geometry.size.width)
                     }
                 }
-                .offset(x: -geometry.size.width)
-                .transition(AnyTransition.opacity)
                 .animation(.easeInOut(duration:1))
             }
             
